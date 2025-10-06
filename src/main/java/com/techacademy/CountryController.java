@@ -38,6 +38,9 @@ public class CountryController {
        return "country/detail";
    }
 
+
+
+
    // ----- 更新（追加） -----
    @PostMapping("/detail")
    public String postCountry(@RequestParam("code") String code, @RequestParam("name") String name,
@@ -58,6 +61,14 @@ public class CountryController {
 
        return "country/delete";
    }
+   //　削除画面　　コード指定なし
+   @GetMapping("/delete")
+   public String deleteCountryFormEmpty(Model model) {
+       // 空のCountryを渡して、空欄のフォームを表示
+       model.addAttribute("country", new Country());
+       return "country/delete";
+   }
+
 
    // ----- 削除実行メソッド -----
    @PostMapping("/delete")
